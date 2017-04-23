@@ -22,7 +22,7 @@ $response = $client->request('POST', $url, [
                 'func' => 'make_spl',
                 'locId' => 'UNI-R',
                 'lang' => 'de',
-                'date' => '2017-04-24',
+                'date' => $datum,
                 'w' => ''
         ]
 ]);
