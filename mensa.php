@@ -8,6 +8,13 @@ use GuzzleHttp\Client;
 
 $client = new Client();
 
+// Check for datum
+if (isset($_GET['datum']) && $_GET['datum'] !== '') {
+        $datum = trim($_GET['datum']);
+} else {
+        $datum = '2017-04-24';
+}
+
 // POST Request
 $url = 'https://stwno.de/infomax/daten-extern/html/speiseplan-render.php';
 $response = $client->request('POST', $url, [
@@ -19,9 +26,6 @@ $response = $client->request('POST', $url, [
                 'w' => ''
         ]
 ]);
-
-// echo $response->getBody();
-// die();
 
 $dom = new DomDocument;
 $dom->loadHTML(utf8_decode((String) $response->getBody()));
